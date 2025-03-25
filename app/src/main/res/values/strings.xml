@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">ZodiacApp</string>
 
-
-    <string name = "horoscope_name_aries" >Aries </ string >
+    <string name="horoscope_name_aries">Aries</string>
     <string name="horoscope_name_taurus">Taurus</string>
     <string name="horoscope_name_gemini">Gemini</string>
     <string name="horoscope_name_cancer">Cancer</string>
@@ -14,8 +13,6 @@
     <string name="horoscope_name_capricorn">Capricorn</string>
     <string name="horoscope_name_aquarius">Aquarius</string>
     <string name="horoscope_name_pisces">Pisces</string>
-
-
 
     <string name="horoscope_date_aries">March 21 to April 19</string>
     <string name="horoscope_date_taurus">April 20 to May 20</string>
