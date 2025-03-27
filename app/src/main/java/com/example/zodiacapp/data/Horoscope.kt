@@ -1,4 +1,4 @@
-package com.example.zodiacapp.date
+package com.example.zodiacapp.data
 
 class Horoscope (
     val id: String,
