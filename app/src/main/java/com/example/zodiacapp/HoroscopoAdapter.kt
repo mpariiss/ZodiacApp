@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
 import com.example.zodiacapp.data.Horoscope
 
-class HoroscopeAdapter(val items: List<Horoscope>, val onitemclick : (Int) -> Unit) : Adapter<HoroscopeViewHolder>() {
+class HoroscopeAdapter(var items: List<Horoscope>, val onitemclick : (Int) -> Unit) : Adapter<HoroscopeViewHolder>() {
 
     // Cual es la vista de las celdas
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HoroscopeViewHolder {
@@ -33,6 +33,10 @@ class HoroscopeAdapter(val items: List<Horoscope>, val onitemclick : (Int) -> Un
 
         }
     }
+    fun updateItem(items:List<Horoscope>){
+        this.items=items
+        notifyDataSetChanged()
+    }
 }
 
 class HoroscopeViewHolder(view: View) : ViewHolder(view) {
@@ -46,4 +50,5 @@ class HoroscopeViewHolder(view: View) : ViewHolder(view) {
         datesTextView.setText(horoscope.dates)
         iconImageView.setImageResource(horoscope.icon)
     }
+
 }

@@ -1,6 +1,8 @@
 package com.example.zodiacapp.activities
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -39,6 +41,37 @@ class DetailActivity : AppCompatActivity() {
         iconImageView.setImageResource(horoscope.icon)
 
         Toast.makeText(this, getString(horoscope.name),Toast.LENGTH_SHORT).show()
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        menuInflater.inflate(R.menu.activity_detail_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.menu_favorite->{
+
+                Toast.makeText( this,"favorite", Toast.LENGTH_SHORT).show()
+                return true
+            }
+
+
+            R.id.menu_share->{
+
+                Toast.makeText( this,"compartir", Toast.LENGTH_SHORT).show()
+
+                return true
+            }
+
+            else->{
+                return super.onOptionsItemSelected(item)
+            }
+
+        }
+
 
     }
 }
