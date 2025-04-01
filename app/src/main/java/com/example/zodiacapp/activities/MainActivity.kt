@@ -18,10 +18,12 @@ import com.example.zodiacapp.data.HoroscopeProvider
 
 class MainActivity : AppCompatActivity() {
 
-var horoscopeList =HoroscopeProvider.getAll()
+    var horoscopeList = HoroscopeProvider.getAll()
 
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: HoroscopeAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,26 +35,29 @@ var horoscopeList =HoroscopeProvider.getAll()
         }
 
         recyclerView = findViewById(R.id.recyclerView)
+    }
 
-        adapter = HoroscopeAdapter(horoscopeList, {
-            position ->
+    override fun onResume() {
+        super.onResume()
+        adapter = HoroscopeAdapter(horoscopeList, { position ->
             val horoscopo = horoscopeList[position]
             val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("HOROSCOPE_ID",horoscopo.id)
+            intent.putExtra("HOROSCOPE_ID", horoscopo.id)
             startActivity(intent)
         })
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
-         menuInflater.inflate(R.menu.activity_main_menu, menu)
+        menuInflater.inflate(R.menu.activity_main_menu, menu)
 
-      val menuItem =  menu.findItem(R.id.menu_search)
-      val searchView =  menuItem.actionView as SearchView
+        val menuItem = menu.findItem(R.id.menu_search)
+        val searchView = menuItem.actionView as SearchView
 
-        searchView.setOnQueryTextListener(object  : OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : OnQueryTextListener {
 
 
             override fun onQueryTextSubmit(query: String): Boolean {
@@ -63,7 +68,7 @@ var horoscopeList =HoroscopeProvider.getAll()
 
             override fun onQueryTextChange(newText: String): Boolean {
 
-               horoscopeList = HoroscopeProvider.getAll().filter { horoscope ->
+                horoscopeList = HoroscopeProvider.getAll().filter { horoscope ->
 
                     getString(horoscope.name).contains(newText, true)
 
@@ -77,7 +82,6 @@ var horoscopeList =HoroscopeProvider.getAll()
 
         return true
     }
-
 
 
 }
